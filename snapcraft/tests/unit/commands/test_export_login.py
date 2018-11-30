@@ -45,12 +45,7 @@ class ExportLoginCommandTestCase(CommandBaseTestCase):
     @mock.patch.object(storeapi.StoreClient, 'acl')
     def test_successful_export(
             self, mock_acl, mock_login, mock_get_account_information):
-        self.mock_input.return_value = 'user@example.com'
-        mock_acl.return_value = {
-            'snap_ids': None,
-            'channels': None,
-            'permissions': None,
-        }
+   
 
         result = self.run_command(['export-login', 'exported'])
 
