@@ -133,19 +133,7 @@ class ExportLoginCommandTestCase(CommandBaseTestCase):
             storeapi.constants.INVALID_CREDENTIALS))
         self.assertThat(result.output, Contains('Login failed.'))
 
-         
-    @mock.patch.object(storeapi._sca_client.SCAClient,
-                       'get_account_information')
-    @mock.patch.object(storeapi.StoreClient, 'login')
-    @mock.patch.object(storeapi.StoreClient, 'acl')
-    def test_successful_export(
-            self, mock_acl, mock_login, mock_get_account_information):
-        self.mock_input.return_value = 'user@example.com'
-        mock_acl.return_value = {
-            'snap_ids':['edge123'],
-            'channels': None,
-            'permissions': None,
-        }
+    
 
         result = self.run_command(['export-login', 'exported'])
 
